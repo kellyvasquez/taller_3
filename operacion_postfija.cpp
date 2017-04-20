@@ -10,22 +10,15 @@ struct nodo{
 void insertar (nodo *&pila, int n);
 int quitar (nodo *&pila, int &n);
 bool pila_vacia (nodo *pila);
-void operacion (nodo *pila, char arreglo[]);
 void buscar_nodo (nodo *pila);
 void imprimir (nodo *pila);
 void eliminar_nodo (nodo *&pila);
-
+void esOperador ();
+bool esNumero ();
+bool esEspacio ();
+float operacion ();
 
 int main() {
-
-    int resultado;
-    char cadena[20];
-
-    printf("Ingrese la operacion en postfijo separada por espacios: ");
-    fgets(cadena, 20, stdin);
-
-    imprimir (nodo *pila);
-    printf("\nEl resultado de la operacion es: %d", resultado);
 
     system("pause");
     return 0;
@@ -52,25 +45,32 @@ bool pila_vacia (nodo *pila){
 }
 
 
-void operacion (nodo **pila, char arreglo[])
+float operacion (float a, float b, float c)
 {
-    int a, b, i=0, numero_pila;
-    char numero, espacio, operador;
+    float resultado;
+    int op=c;
 
-        if(arreglo[i]==numero(arreglo[i])){
-            numero=strcat(numero, arreglo[i]);
-        } i+=1;
-
-        if(arreglo[i])== espacio (arreglo[i]){
-           numero_pila= float (numero);
-           insertar (pila, numero_pila);
-           numero = 0; i+=1; }
-
-        if(arreglo[i])== operador (arreglo[i]){
-            a = eliminar_nodo (pila);
-            b = eliminar_nodo (pila);
-            insertar (pila, a+b) i+=2;
+    switch (op){
+        case 43:
+            resultado=a+b;
+            break;
+        case 45:
+            resultado=a-b;
+            break;
+        case 42:
+            resultado=a*b;
+            break;
+        case 47:
+            resultado=a/b;
+            break;
         }
+}
+
+void esOperador(nodo *&pila, float &a, float &b, int &z){
+    a=eliminar_nodo(pila);
+    b=eliminar_nodo(pila);
+    z=operacion(a,b);
+    insertar(pila, z);
 }
 
 void imprimir (nodo *pila){
@@ -100,7 +100,7 @@ void buscar_nodo (nodo *pila){
     }else{
         printf("\n Pila vacia"); }
     if (encontrado){
-        printf("\n Esta en el nodo en la posicion ... "); }
+        printf("\n Nodo encontrado"); }
 }
 
 void eliminar_nodo (nodo *&pila){
