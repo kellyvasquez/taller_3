@@ -93,7 +93,6 @@ float quitar_elementos (nodo *&pila) {
     return n;
 }
 
-
 bool pila_vacia (nodo *pila){
     return (pila==NULL)? true:false;
 }
@@ -111,14 +110,14 @@ void ingresarExpresion(char arreglo[tam]){
     printf("\n Ingrese una expresion en postfijo: ");
     fgets(arreglo, tam, stdin);
     longitud = strlen(arreglo);
-    printf("\n La expresion se almaceno con exito \n");
-    printf("\nExpresion ingresada: %s\n", arreglo);
+    printf("\n La expresion se almaceno con exito.\n");
 }
+
 void mostrarExpresion(char arreglo[tam]){
     int longitud;
     longitud = strlen(arreglo);
-    printf("\nLongitud de la expresion: %d", longitud);
-    printf("\nExpresion ingresada: %s\n", arreglo);
+    printf("\n La longitud de la expresion es: %d", longitud);
+    printf("\n La expresion ingresada es: %s \n", arreglo);
 }
 
 float realziar_operacion (float a, float b, char c) {
@@ -185,8 +184,9 @@ void operacion_postfijo (nodo *&pila, char arreglo[tam]){
 }
 
 void resultado_postfijo (nodo *&pila, char arreglo[tam]){
-    printf("%s =  %0.0f",arreglo, pila -> dato);
+    printf("%s = %0.0f", arreglo, pila -> dato);
 }
+
 float convertir_cad_num (char numero[tam]){
     float num;
     num = atoi(numero);
